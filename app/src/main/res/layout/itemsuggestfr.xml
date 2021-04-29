@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:orientation="vertical"
+    android:background="@drawable/bg_sgf"
+    android:layout_marginLeft="15dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imgsgfr"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/a1"
+        app:riv_corner_radius="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerCrop"/>
+    <TextView
+        android:id="@+id/tvusfr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Linh Đỗ"
+        android:layout_below="@id/imgsgfr"
+        android:layout_marginTop="5dp"
+        android:textSize="12dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
+        <Button
+            android:id="@+id/btnaddfrS"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bgbtnsf2"
+            android:text="Gửi yêu cầu"
+            android:layout_margin="9dp"
+            android:layout_below="@id/tvusfr"
+            android:textColor="@color/white"
+            android:textSize="9dp"
+            android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/nextfrS"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bgbtn2"
+            android:text="Bỏ qua"
+            android:layout_below="@id/tvusfr"
+            android:layout_margin="9dp"
+            android:layout_toRightOf="@id/btnaddfrS"
+            android:textColor="@color/black"
+            android:textSize="9dp"
+            android:textAllCaps="false"/>
+    </RelativeLayout>
+</LinearLayout>

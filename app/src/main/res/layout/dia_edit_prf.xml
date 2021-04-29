@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_dialog_prf"
+    android:id="@+id/layoutdialog"
+    app:behavior_hideable = "true"
+    app:behavior_peekHeight = "0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <TextView
+        android:id="@+id/ttdia1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thông tin của bạn"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
+    <EditText
+        android:id="@+id/edtUnamePrf"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
+        android:hint="Nhập tên của bạn..."
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:layout_below="@id/ttdia1"
+        android:background="@drawable/edt1"
+        />
+    <EditText
+        android:id="@+id/edtJobPrf"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:hint="Nhập công việc của bạn..."
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:layout_below="@id/edtUnamePrf"
+        android:background="@drawable/edt1"
+        />
+    <EditText
+        android:id="@+id/edtSchoolPrf"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Nhập nơi bạn từng học..."
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:layout_below="@id/edtJobPrf"
+        android:background="@drawable/edt1"
+        />
+    <EditText
+        android:id="@+id/edtAddressPrf"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Nhập nơi đang sống..."
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:layout_below="@id/edtSchoolPrf"
+        android:background="@drawable/edt1"
+        />
+    <EditText
+        android:id="@+id/edtCountryPrf"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Nhập nơi bạn sinh ra..."
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:layout_below="@id/edtAddressPrf"
+        android:background="@drawable/edt1"
+        />
+    <RelativeLayout
+        android:id="@+id/containerBirth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/edtCountryPrf">
+    <EditText
+        android:id="@+id/edtBirthPrf"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Nhập ngày sinh...(dd-mm-yyyy)"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:background="@drawable/edt1"
+        />
+    </RelativeLayout>
+    <EditText
+        android:id="@+id/edtRelationPrf"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Nhập tình trạng hôn nhân..."
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:layout_below="@id/containerBirth"
+        android:background="@drawable/edt1"
+        />
+
+    <Button
+        android:id="@+id/btnAddPrf"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bgbtn"
+        android:text="Thêm"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_below="@id/edtRelationPrf"
+        android:layout_marginBottom="15dp"
+        android:onClick="addPrftoSever"
+        />
+</RelativeLayout>

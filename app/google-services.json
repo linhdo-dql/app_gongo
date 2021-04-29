@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "84252302261",
+    "project_id": "gongo-250ca",
+    "storage_bucket": "gongo-250ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84252302261:android:2e2028aa114b5431a157fc",
+        "android_client_info": {
+          "package_name": "com.example.app_go_go"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84252302261-s6nofcf9c7sbdj24vfbvj4ic38mp9dis.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhrm3YKAutTgWQQJdP2IXQhWsNoBLSvQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84252302261-s6nofcf9c7sbdj24vfbvj4ic38mp9dis.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

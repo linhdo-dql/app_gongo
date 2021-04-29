@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Welcome_GoGo">
+    <ImageView
+        android:id="@+id/lgw"
+        android:layout_width="150dp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="50dp"
+        android:src="@drawable/imagelogotitle"/>
+    <Button
+        android:id="@+id/btnSignInWel"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/bgbtn3"
+        android:textSize="18sp"
+        android:text="Bắt đầu"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:onClick="nextActiviyLogin"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/dotlayout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/btnSignInWel"
+        app:ci_width="5dp"
+        app:ci_height="5dp"
+        app:ci_drawable="@color/blue"
+        app:ci_orientation="horizontal"
+        app:ci_gravity="center"
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal" />
+
+</RelativeLayout>

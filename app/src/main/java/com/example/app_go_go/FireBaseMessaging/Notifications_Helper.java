@@ -14,6 +14,7 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.app_go_go.Activities.ChildActivities.StatusDetail;
 import com.example.app_go_go.Activities.MainActivity;
 import com.example.app_go_go.R;
 
@@ -35,13 +36,13 @@ public class Notifications_Helper {
             Intent intent1;
             if(id_stt.equals("stt"))
             {
-                intent1 = new Intent(context1, MainActivity.class);
+                intent1 = new Intent(context1, StatusDetail.class);
             }
             else {
-                intent1 = new Intent(context1, MainActivity.class);
+                intent1 = new Intent(context1, StatusDetail.class);
             }
-        intent1.putExtra("id_stt", id_stt);
-        intent1.putExtra("acc_name", acc_name);
+        intent1.putExtra("type", id_stt);
+        intent1.putExtra("id_stt", acc_name);
         PendingIntent contentIntent = PendingIntent.getActivity(context1, 0,intent1, PendingIntent.FLAG_UPDATE_CURRENT);
         mbuilder.setContentIntent(contentIntent);
         NotificationManager notificationManager = (NotificationManager) context1.getSystemService(NOTIFICATION_SERVICE);

@@ -1,12 +1,18 @@
 package com.example.app_go_go.Adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +36,8 @@ import com.example.app_go_go.Activities.MainActivity;
 import com.example.app_go_go.Objects.Status_Contents;
 import com.example.app_go_go.Objects.Status_Image;
 import com.example.app_go_go.R;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,6 +55,7 @@ public class Status_Adapter extends RecyclerView.Adapter<Status_Adapter.StatusVi
     Context context1;
     ArrayList<Status_Contents> stts;
     Status_Image_Adapter s = new Status_Image_Adapter(context1);
+    BottomSheetBehavior bottomSheetBehavior;
     public Status_Adapter(Context context) {
         this.context1 = context;
     }
@@ -122,12 +131,26 @@ public class Status_Adapter extends RecyclerView.Adapter<Status_Adapter.StatusVi
             @Override
             public void onClick(View v) {
                 if(!MainActivity.acc.equals(stts.get(position).acc_stt)) {
-                    sendnotification_Like(stts.get(position).acc_stt);
+                    sendnotification_Like(stts.get(position).acc_stt, stts.get(position).id_stt);
                 }
             }
         });
+        holder.btnCmt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context1, R.style.BottomSheetDialog);
+                View view = LayoutInflater.from(context1).inflate(R.layout.dialog_cmt, null);
+                bottomSheetDialog.setContentView(view);
+                bottomSheetDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+                bottomSheetDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                bottomSheetDialog.show();
+
+            }
+        });
     }
-    public String sendnotification_Like(String acc) {
+    public String sendnotification_Like(String acc, String id_stt) {
         RequestQueue r = Volley.newRequestQueue(context1);
         final String[] a = {""};
         String url = "https://mesfa.store/getToken.php";
@@ -140,7 +163,7 @@ public class Status_Adapter extends RecyclerView.Adapter<Status_Adapter.StatusVi
                         JSONObject  js = response.getJSONObject(i);
                         if(js.getString("acc_token").equals(acc))
                         {
-                            sendnotification(js.getString("content_token"));
+                            sendnotification(js.getString("content_token"),id_stt);
                            // putNotifyOffline(js.getString("content_token"));
                             break;
                         }
@@ -158,7 +181,7 @@ public class Status_Adapter extends RecyclerView.Adapter<Status_Adapter.StatusVi
         r.add(jsonArrayRequest);
         return a[0];
     }
-   public void sendnotification(String token){
+   public void sendnotification(String token, String id_stt){
         RequestQueue r = Volley.newRequestQueue(context1);
         String url = "https://fcm.googleapis.com/fcm/send";
         JSONObject mainObj = new JSONObject();
@@ -168,9 +191,10 @@ public class Status_Adapter extends RecyclerView.Adapter<Status_Adapter.StatusVi
             jsonObject.put("title","Yêu thích");
             jsonObject.put("body", MainActivity.acc+" đã thích hình ảnh của bạn");
             mainObj.put("notification",jsonObject);
+
             JSONObject extradata = new JSONObject();
-            extradata.put("id_stt","stt");
-            extradata.put("acc_name","abc");
+            extradata.put("type","stt");
+            extradata.put("id_stt",id_stt);
             mainObj.put("data",extradata);
             JsonObjectRequest js = new JsonObjectRequest(Request.Method.POST, url, mainObj, new Response.Listener<JSONObject>() {
                 @Override
@@ -238,6 +262,7 @@ public class Status_Adapter extends RecyclerView.Adapter<Status_Adapter.StatusVi
         RecyclerView rcvImage;
         ImageView imgAvatarItemstt, tvPermission, imgiconemoji, imgHeart;
         Status_Image_Adapter status_image_adapter;
+        LinearLayout btnCmt;
         public StatusViewHolder(@NonNull View itemView) {
             super(itemView);
             tvidStt = itemView.findViewById(R.id.idSttItem);
@@ -251,6 +276,7 @@ public class Status_Adapter extends RecyclerView.Adapter<Status_Adapter.StatusVi
             imgAvatarItemstt = itemView.findViewById(R.id.imgAvatarSttItem);
             imgiconemoji = itemView.findViewById(R.id.iconemojiSttItem);
             imgHeart = itemView.findViewById(R.id.imgHearth);
+            btnCmt = itemView.findViewById(R.id.btnCmtHome);
         }
         public void getProfile(String acc)
         {

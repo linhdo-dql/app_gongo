@@ -4,18 +4,28 @@
     package="com.example.app_go_go">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-
     <meta-data
         android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyDdxC4sdCYZKpT9nHNlqJL53m8saMWSn4M" />
+    <meta-data
+        android:name="com.google.firebase.messaging.default_notification_icon"
+        android:resource="@drawable/imglogo" />
+    <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+         notification message. See README(https://goo.gl/6BKBk7) for more.
+    -->
+    <meta-data
+        android:name="com.google.firebase.messaging.default_notification_color"
+        android:resource="@color/primaryColor" />
 
     <application
         android:allowBackup="true"
@@ -23,38 +33,44 @@
         android:icon="@drawable/imagelogoo"
         android:label="@string/app_name"
         android:largeHeap="true"
+        android:windowSoftInputMode="stateHidden|adjustResize"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        <activity android:name=".Activities.ChildActivities.Profiles">
+        <activity android:name=".Activities.ChildActivities.StatusDetail">
 
         </activity>
-        <activity android:name=".Activities.ChildActivities.StatusActivity"></activity>
+        <activity android:name=".Activities.ChildActivities.Profiles"></activity>
+        <activity android:name=".Activities.ChildActivities.StatusActivity" />
         <activity android:name=".Activities.SignUp">
+
+        </activity>
+        <activity android:name=".Activities.SignIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Activities.SignIn">
-
-        </activity>
         <activity android:name=".Activities.Welcome_GoGo" />
-        <activity android:name=".Activities.Intro_Go_Go">
+        <activity android:name=".Activities.Intro_Go_Go"></activity>
+        <activity android:name=".Activities.MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize">
 
         </activity>
-        <activity android:name=".Activities.MainActivity">
 
-        </activity>
         <service
             android:name=".FireBaseMessaging.MyFirebaseMessagingService"
             android:permission="TODO"
             tools:ignore="ExportedService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".FireBaseMessaging.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
     </application>

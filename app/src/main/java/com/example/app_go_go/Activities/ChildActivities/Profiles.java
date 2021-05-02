@@ -241,7 +241,7 @@ public class Profiles extends AppCompatActivity {
         });
         try {
             rcv_stt_prf = findViewById(R.id.rcv_sttPrf);
-            status_adapter = new Status_Adapter(Profiles.this);
+            //status_adapter = new Status_Adapter(Profiles.this);
             rcv_stt_prf.setLayoutManager(new LinearLayoutManager(this));
             getSttDB();
             rcv_stt_prf.setAdapter(status_adapter);
@@ -255,6 +255,7 @@ public class Profiles extends AppCompatActivity {
     {
         if(bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED){
             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            bs.hideKeyboardFrom(Profiles.this, layout_dia_edit_prf);
         }else {
             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         }

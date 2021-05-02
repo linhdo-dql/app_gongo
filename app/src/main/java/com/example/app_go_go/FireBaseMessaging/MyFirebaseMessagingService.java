@@ -32,10 +32,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             String title = remoteMessage.getNotification().getTitle();
             String text = remoteMessage.getNotification().getBody();
             Map<String, String> extradata = remoteMessage.getData();
+            String type = extradata.get("type");
             String id_stt = extradata.get("id_stt");
-            String acc_name = extradata.get("acc_name");
-            Notifications_Helper.sendNotify_Like(getApplicationContext(), title, text,id_stt,acc_name);
+            Notifications_Helper.sendNotify_Like(getApplicationContext(), title, text,type,id_stt);
         }
     }
+
 
 }
